@@ -74,7 +74,7 @@ function enviarWhatsApp() {
   mensaje += `%0A💰 *Total: S/ ${total}*`;
 
   window.open(
-    "https://wa.me/51930123456?text=" + mensaje,
+    "https://wa.me/51930598363?text=" + mensaje,
     "_blank"
   );
 }
