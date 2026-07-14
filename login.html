@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Login | Bloomix Admin</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+body{
+
+background:#f7f7fb;
+
+font-family:Poppins,sans-serif;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+height:100vh;
+
+}
+
+.card-login{
+
+width:420px;
+
+background:#fff;
+
+border-radius:20px;
+
+padding:40px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.logo{
+
+font-size:30px;
+
+font-weight:700;
+
+text-align:center;
+
+margin-bottom:30px;
+
+color:#ff4fa3;
+
+}
+
+button{
+
+height:50px;
+
+font-weight:600;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card-login">
+
+<div class="logo">
+
+🌸 BLOOMIX ADMIN
+
+</div>
+
+<div class="mb-3">
+
+<label>
+
+Correo electrónico
+
+</label>
+
+<input
+type="email"
+id="correo"
+class="form-control">
+
+</div>
+
+<div class="mb-4">
+
+<label>
+
+Contraseña
+
+</label>
+
+<input
+type="password"
+id="password"
+class="form-control">
+
+</div>
+
+<button
+class="btn btn-success w-100"
+id="btnLogin">
+
+Ingresar
+
+</button>
+
+</div>
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getAuth,
+signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyAy5l2ycbWT17mXWiAh_VtzF94T2Dx_Fe0",
+
+authDomain: "bloomix-oficial-f98ff.firebaseapp.com",
+
+projectId: "bloomix-oficial-f98ff",
+
+storageBucket: "bloomix-oficial-f98ff.firebasestorage.app",
+
+messagingSenderId: "1034656114873",
+
+appId: "1:1034656114873:web:b20edfca314959d8d01368"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+document.getElementById("btnLogin").addEventListener("click", async () => {
+
+const correo = document.getElementById("correo").value;
+
+const password = document.getElementById("password").value;
+
+try{
+
+await signInWithEmailAndPassword(auth, correo, password);
+
+window.location.href = "admin.html";
+
+}catch(error){
+
+alert("Correo o contraseña incorrectos.");
+
+console.error(error);
+
+}
+
+});
+
+</script>
+
+</body>
+
+</html>
