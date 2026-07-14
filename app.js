@@ -50,7 +50,31 @@ function mostrarCarrito() {
     `;
   });
 
-  html += `<h3>Total: S/ ${total}</h3>`;
+  html += `
+<h3>Total: S/ ${total}</h3>
+
+<button class="btn" onclick="enviarWhatsApp()">
+📲 Finalizar pedido por WhatsApp
+</button>
+`;
 
   document.getElementById("carrito").innerHTML = html;
+}
+function enviarWhatsApp() {
+  let mensaje = "🛍️ *Pedido Bloomix Oficial*%0A%0A";
+  let total = 0;
+
+  carrito.forEach(producto => {
+    let subtotal = producto.precio * producto.cantidad;
+    total += subtotal;
+
+    mensaje += `• ${producto.nombre} x${producto.cantidad} - S/ ${subtotal}%0A`;
+  });
+
+  mensaje += `%0A💰 *Total: S/ ${total}*`;
+
+  window.open(
+    "https://wa.me/51930123456?text=" + mensaje,
+    "_blank"
+  );
 }
