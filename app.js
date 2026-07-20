@@ -370,7 +370,11 @@ async function cargarProductos() {
 
 <div class="precio">
 
-S/ ${p.precio}
+${p.precioAnterior && p.precioAnterior > 0
+? `<span class="precio-anterior">S/ ${p.precioAnterior.toFixed(2)}</span>`
+: ""}
+
+<span class="precio-actual">S/ ${p.precio.toFixed(2)}</span>
 
 </div>
 

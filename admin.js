@@ -51,6 +51,7 @@ const preview = document.getElementById("previewImagen");
 const nombre = document.getElementById("nombre");
 
 const precio = document.getElementById("precio");
+const precioAnterior = document.getElementById("precioAnterior");
 
 const categoria = document.getElementById("categoria");
 
@@ -163,6 +164,7 @@ formulario.addEventListener("submit", async (e) => {
         nombre: nombre.value,
 
         precio: Number(precio.value),
+        precioAnterior: Number(precioAnterior.value) || 0,
 
         categoria: categoria.value,
 
@@ -192,6 +194,7 @@ formulario.addEventListener("submit", async (e) => {
         nombre: nombre.value,
 
         precio: Number(precio.value),
+        precioAnterior: Number(precioAnterior.value) || 0,
 
         categoria: categoria.value,
 
@@ -353,6 +356,7 @@ window.editarProducto = async function(id){
             nombre.value=p.nombre;
 
             precio.value=p.precio;
+            precioAnterior.value = p.precioAnterior || "";
 
             categoria.value=p.categoria;
 

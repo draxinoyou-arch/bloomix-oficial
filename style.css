@@ -1031,3 +1031,25 @@ RESPONSIVE
 }
 
 }
+/* ===========================
+   PRECIOS EN OFERTA
+=========================== */
+
+.precio{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.precio-anterior{
+    text-decoration:line-through;
+    color:#999;
+    font-size:15px;
+}
+
+.precio-actual{
+    color:#e91e63;
+    font-size:22px;
+    font-weight:700;
+}
