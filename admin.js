@@ -366,9 +366,37 @@ async function cargarReclamos() {
 
                     <p><strong>Descripción:</strong><br>${r.descripcion}</p>
 
-                    <span class="badge bg-warning text-dark">
-                        ${r.estado}
-                    </span>
+                    <div class="mt-3">
+
+<span class="badge ${r.estado==="Solucionado"
+? "bg-success"
+: "bg-warning text-dark"}">
+
+${r.estado}
+
+</span>
+
+<div class="mt-3">
+
+<button
+class="btn btn-success btn-sm me-2"
+onclick="marcarSolucionado('${documento.id}')">
+
+✅ Solucionado
+
+</button>
+
+<button
+class="btn btn-danger btn-sm"
+onclick="eliminarReclamo('${documento.id}')">
+
+🗑 Eliminar
+
+</button>
+
+</div>
+
+</div>
 
                 </div>
 
@@ -534,3 +562,27 @@ menuItems.forEach(item => {
     });
 
 });
+window.marcarSolucionado = async function(id){
+
+    await updateDoc(
+        doc(db,"reclamos",id),
+        {
+            estado:"Solucionado"
+        }
+    );
+
+    cargarReclamos();
+
+}
+
+window.eliminarReclamo = async function(id){
+
+    if(!confirm("¿Eliminar este reclamo?")) return;
+
+    await deleteDoc(
+        doc(db,"reclamos",id)
+    );
+
+    cargarReclamos();
+
+}
