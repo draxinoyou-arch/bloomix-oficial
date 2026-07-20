@@ -404,3 +404,65 @@ if (btnSalir) {
     });
 
 }
+/* ===========================
+MENÚ RESPONSIVE
+=========================== */
+
+const btnMenu = document.getElementById("btnMenu");
+const sidebar = document.querySelector(".sidebar");
+
+if (btnMenu && sidebar) {
+
+    btnMenu.addEventListener("click", () => {
+        sidebar.classList.toggle("activa");
+    });
+
+    document.addEventListener("click", (e) => {
+
+        if (
+            window.innerWidth <= 991 &&
+            !sidebar.contains(e.target) &&
+            !btnMenu.contains(e.target)
+        ) {
+            sidebar.classList.remove("activa");
+        }
+
+    });
+
+}
+/* ==========================================
+CAMBIO DE SECCIONES
+========================================== */
+const menuItems = document.querySelectorAll(".sidebar li[data-section]");
+const secciones = document.querySelectorAll(".admin-section");
+
+menuItems.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+        const destino = item.dataset.section;
+
+        // Ocultar todas las secciones
+        secciones.forEach(sec => {
+            sec.classList.add("d-none");
+        });
+
+        // Mostrar la sección seleccionada
+        const activa = document.getElementById(destino);
+
+        if (activa) {
+            activa.classList.remove("d-none");
+        }
+
+        // Cambiar opción activa del menú
+        menuItems.forEach(li => li.classList.remove("activo"));
+        item.classList.add("activo");
+
+        // Cerrar menú en móviles
+        if (window.innerWidth <= 991) {
+            sidebar.classList.remove("activa");
+        }
+
+    });
+
+});

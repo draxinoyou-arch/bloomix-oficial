@@ -32,55 +32,53 @@ SIDEBAR
 
     <div class="logo">
 
-        🌸 BLOOMIX
+    🌸 BLOOMIX
 
-        <span>ADMIN</span>
+    <span>ADMIN</span>
 
-    </div>
+</div>
 
-    <ul>
+<li class="activo" data-section="dashboardSection">
 
-        <li class="activo">
+<i class="fa-solid fa-house"></i>
 
-            <i class="fa-solid fa-house"></i>
+Dashboard
 
-            Dashboard
+</li>
 
-        </li>
+<li data-section="productosSection">
 
-        <li>
+    <i class="fa-solid fa-box"></i>
 
-            <i class="fa-solid fa-box"></i>
+    Productos
 
-            Productos
+</li>
 
-        </li>
+<li data-section="pedidosSection">
 
-        <li>
+<i class="fa-solid fa-cart-shopping"></i>
 
-            <i class="fa-solid fa-tags"></i>
+Pedidos
 
-            Categorías
+</li>
 
-        </li>
+<li data-section="reclamosSection">
 
-        <li>
+<i class="fa-solid fa-book-open"></i>
 
-            <i class="fa-solid fa-cart-shopping"></i>
+Libro de Reclamaciones
 
-            Pedidos
+</li>
 
-        </li>
+<li data-section="configSection">
 
-        <li>
+<i class="fa-solid fa-gear"></i>
 
-            <i class="fa-solid fa-gear"></i>
+Configuración
 
-            Configuración
+</li>
 
-        </li>
-
-    </ul>
+</ul>
 
 </aside>
 
@@ -92,27 +90,23 @@ CONTENIDO
 
 <header class="topbar">
 
-<div class="d-flex justify-content-between align-items-center">
+<div class="topbar-left">
+
+<button id="btnMenu" class="menu-toggle">
+<i class="fa-solid fa-bars"></i>
+</button>
 
 <div>
 
-<h2>
+<h2>Panel de Administración</h2>
 
-Panel de Administración
-
-</h2>
-
-<p>
-
-Bienvenido a Bloomix Oficial
-
-</p>
+<p>Bienvenido a Bloomix Oficial</p>
 
 </div>
 
-<button
-id="btnSalir"
-class="btn btn-danger">
+</div>
+
+<button id="btnSalir" class="btn btn-danger">
 
 <i class="fa-solid fa-right-from-bracket"></i>
 
@@ -120,11 +114,9 @@ Cerrar sesión
 
 </button>
 
-</div>
-
 </header>
 
-<section class="dashboard">
+<section id="dashboardSection" class="dashboard admin-section">
 
 <div class="card-info">
 
@@ -219,7 +211,7 @@ Destacados
 FORMULARIO PRODUCTO
 =========================== -->
 
-<section class="panel-formulario">
+<section id="productosSection" class="panel-formulario admin-section d-none">
 
 <div class="card-formulario">
 
@@ -407,7 +399,6 @@ Guardar Producto
 
 </div>
 
-</section>
 <!-- ===========================
 LISTA DE PRODUCTOS
 =========================== -->
@@ -482,6 +473,86 @@ Todavía no hay productos registrados.
 </div>
 
 </div>
+
+</section>
+</section>
+
+<!-- ===========================
+LIBRO DE RECLAMACIONES
+=========================== -->
+
+<section id="reclamosSection" class="admin-section d-none">
+
+    <div class="card-formulario">
+
+        <h3>
+            <i class="fa-solid fa-file-circle-exclamation"></i>
+            Libro de Reclamaciones
+        </h3>
+
+        <div id="listaReclamos">
+
+            <div class="alert alert-secondary text-center">
+
+                No hay reclamos registrados.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+PEDIDOS
+=========================== -->
+
+<section id="pedidosSection" class="admin-section d-none">
+
+    <div class="card-formulario">
+
+        <h3>
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            Pedidos
+
+        </h3>
+
+        <div class="alert alert-secondary text-center">
+
+            Aún no hay pedidos.
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+CONFIGURACIÓN
+=========================== -->
+
+<section id="configSection" class="admin-section d-none">
+
+    <div class="card-formulario">
+
+        <h3>
+
+            <i class="fa-solid fa-gear"></i>
+
+            Configuración
+
+        </h3>
+
+        <p>
+
+            Aquí configuraremos la información de Bloomix.
+
+        </p>
+
+    </div>
 
 </section>
 
