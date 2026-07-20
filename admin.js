@@ -11,7 +11,9 @@ import {
     getDocs,
     deleteDoc,
     doc,
-    updateDoc
+    updateDoc,
+    query,
+    orderBy
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import {
     onAuthStateChanged,
@@ -63,6 +65,7 @@ const oferta = document.getElementById("oferta");
 const tablaProductos = document.getElementById("tablaProductos");
 
 const totalProductos = document.getElementById("totalProductos");
+const listaReclamos = document.getElementById("listaReclamos");
 
 // =========================================
 // VARIABLES
@@ -223,6 +226,7 @@ formulario.addEventListener("submit", async (e) => {
 
         imagenURL = "";
         await cargarProductos();
+await cargarReclamos();
 
     } catch (error) {
 
@@ -309,6 +313,66 @@ async function cargarProductos() {
 </td>
 
         </tr>
+        `;
+
+    });
+
+}
+async function cargarReclamos() {
+
+    if (!listaReclamos) return;
+
+    listaReclamos.innerHTML = "";
+
+    const consulta = await getDocs(
+        query(
+            collection(db, "reclamos"),
+            orderBy("fecha", "desc")
+        )
+    );
+
+    if (consulta.empty) {
+
+        listaReclamos.innerHTML = `
+            <div class="alert alert-secondary text-center">
+                No hay reclamos registrados.
+            </div>
+        `;
+
+        return;
+
+    }
+
+    consulta.forEach((documento) => {
+
+        const r = documento.data();
+
+        listaReclamos.innerHTML += `
+            <div class="card mb-3">
+
+                <div class="card-body">
+
+                    <h5>${r.nombre}</h5>
+
+                    <p><strong>Tipo:</strong> ${r.tipo}</p>
+
+                    <p><strong>Documento:</strong> ${r.documento}</p>
+
+                    <p><strong>Correo:</strong> ${r.correo}</p>
+
+                    <p><strong>Teléfono:</strong> ${r.telefono}</p>
+
+                    <p><strong>Pedido:</strong> ${r.pedido || "-"}</p>
+
+                    <p><strong>Descripción:</strong><br>${r.descripcion}</p>
+
+                    <span class="badge bg-warning text-dark">
+                        ${r.estado}
+                    </span>
+
+                </div>
+
+            </div>
         `;
 
     });
@@ -451,8 +515,12 @@ menuItems.forEach(item => {
         const activa = document.getElementById(destino);
 
         if (activa) {
-            activa.classList.remove("d-none");
-        }
+    activa.classList.remove("d-none");
+
+    if (destino === "reclamosSection") {
+        cargarReclamos();
+    }
+}
 
         // Cambiar opción activa del menú
         menuItems.forEach(li => li.classList.remove("activo"));

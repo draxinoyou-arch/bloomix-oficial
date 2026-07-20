@@ -292,6 +292,10 @@ function enviarWhatsApp(){
         "_blank"
 
     );
+    carrito = [];
+guardarCarrito();
+actualizarCarrito();
+cerrarCarrito();
 
 }
 
