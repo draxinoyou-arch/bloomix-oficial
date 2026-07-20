@@ -370,11 +370,28 @@ async function cargarProductos() {
 
 <div class="precio">
 
-${p.precioAnterior && p.precioAnterior > 0
-? `<span class="precio-anterior">S/ ${p.precioAnterior.toFixed(2)}</span>`
-: ""}
+${p.precioAnterior && p.precioAnterior > 0 ? `
+<div class="descuento-badge">
+-${Math.round(((p.precioAnterior - p.precio) / p.precioAnterior) * 100)}%
+</div>
 
-<span class="precio-actual">S/ ${p.precio.toFixed(2)}</span>
+<div class="precio-label">ANTES</div>
+<div class="precio-anterior">
+S/ ${p.precioAnterior.toFixed(2)}
+</div>
+
+<div class="precio-label">AHORA</div>
+` : ""}
+
+<div class="precio-actual">
+S/ ${p.precio.toFixed(2)}
+</div>
+
+${p.precioAnterior && p.precioAnterior > 0 ? `
+<div class="ahorro">
+💚 Ahorras S/ ${(p.precioAnterior - p.precio).toFixed(2)}
+</div>
+` : ""}
 
 </div>
 

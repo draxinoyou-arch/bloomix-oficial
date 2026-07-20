@@ -1037,19 +1037,105 @@ RESPONSIVE
 
 .precio{
     display:flex;
-    align-items:center;
-    gap:10px;
-    flex-wrap:wrap;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:6px;
+    margin:15px 0;
+}
+
+.descuento-badge{
+    background:#ff3f8e;
+    color:#fff;
+    padding:6px 14px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:700;
+    box-shadow:0 6px 15px rgba(255,63,142,.30);
+}
+
+.precio-label{
+    font-size:12px;
+    font-weight:700;
+    color:#888;
+    letter-spacing:1px;
 }
 
 .precio-anterior{
     text-decoration:line-through;
     color:#999;
-    font-size:15px;
+    font-size:18px;
 }
 
 .precio-actual{
     color:#e91e63;
-    font-size:22px;
+    font-size:32px;
+    font-weight:800;
+}
+
+.ahorro{
+    color:#16a34a;
+    font-size:15px;
     font-weight:700;
+}
+/* ===========================
+   QUIÉNES SOMOS
+=========================== */
+
+.nosotros{
+    padding:80px 0;
+    background:linear-gradient(135deg,#fff7fb,#ffe8f3);
+}
+
+.nosotros h2{
+    font-size:40px;
+    font-weight:800;
+    color:#ff3f8e;
+    margin-bottom:25px;
+}
+
+.nosotros p{
+    font-size:17px;
+    color:#555;
+    line-height:1.8;
+}
+
+.lista-nosotros{
+    list-style:none;
+    padding:0;
+    margin-top:25px;
+}
+
+.lista-nosotros li{
+    font-size:17px;
+    margin-bottom:14px;
+    font-weight:500;
+}
+
+.nosotros-card{
+    background:#fff;
+    border-radius:25px;
+    padding:45px;
+    box-shadow:0 12px 35px rgba(0,0,0,.10);
+    transition:.35s;
+}
+
+.nosotros-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 45px rgba(255,63,142,.20);
+}
+
+.nosotros-card i{
+    font-size:70px;
+    color:#ff3f8e;
+    margin-bottom:20px;
+}
+
+.nosotros-card h3{
+    font-size:28px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.nosotros-card p{
+    margin:0;
 }
