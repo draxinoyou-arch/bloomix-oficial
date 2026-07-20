@@ -1139,3 +1139,20 @@ RESPONSIVE
 .nosotros-card p{
     margin:0;
 }
+.empresa-avala{
+    margin-top:20px;
+    font-size:18px;
+    font-weight:600;
+    color:#333;
+}
+
+.ruc{
+    display:inline-block;
+    margin-top:12px;
+    padding:8px 18px;
+    border-radius:30px;
+    background:#16a34a;
+    color:white;
+    font-weight:700;
+    font-size:16px;
+}
