@@ -341,6 +341,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+let mostrandoTodos = false;
+
+const btnVerMas = document.getElementById("btnVerMas");
+
 async function cargarProductos() {
 
     const contenedor = document.getElementById("listaProductos");
@@ -351,7 +355,16 @@ async function cargarProductos() {
 
     const consulta = await getDocs(collection(db, "productos"));
 
-    consulta.forEach((doc) => {
+    const productos = consulta.docs;
+
+const esCelular = window.innerWidth <= 768;
+
+const productosMostrar =
+    esCelular && !mostrandoTodos
+        ? productos.slice(0, 4)
+        : productos;
+
+productosMostrar.forEach((doc) => {
 
         const p = doc.data();
 
@@ -414,6 +427,45 @@ Añadir al carrito
 </div>
 
 `;
+
+    });
+
+    if (btnVerMas) {
+
+    if (esCelular && productos.length > 4) {
+
+        btnVerMas.classList.remove("d-none");
+
+        btnVerMas.textContent = mostrandoTodos
+            ? "Ver menos"
+            : "Ver más productos";
+
+    } else {
+
+        btnVerMas.classList.add("d-none");
+
+    }
+
+}
+
+}
+
+if (btnVerMas) {
+
+    btnVerMas.addEventListener("click", () => {
+
+        mostrandoTodos = !mostrandoTodos;
+
+        cargarProductos();
+
+        if (!mostrandoTodos) {
+
+            document.getElementById("productos")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
 
     });
 
