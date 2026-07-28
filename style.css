@@ -1204,3 +1204,56 @@ RESPONSIVE
     color:#ff3f8e;
     margin-right:10px;
 }
+/* ===========================
+DESCRIPCIÓN VER MÁS
+=========================== */
+
+.descripcion-producto{
+
+    margin:12px 0;
+
+}
+
+.texto-corto{
+
+    display:-webkit-box;
+
+    -webkit-line-clamp:3;
+
+    -webkit-box-orient:vertical;
+
+    overflow:hidden;
+
+    transition:.3s;
+
+    line-height:1.6;
+
+}
+
+.texto-corto.expandido{
+
+    display:block;
+
+}
+
+.ver-mas{
+
+    display:inline-block;
+
+    margin-top:8px;
+
+    color:#ff3f8e;
+
+    font-weight:600;
+
+    text-decoration:none;
+
+    cursor:pointer;
+
+}
+
+.ver-mas:hover{
+
+    text-decoration:underline;
+
+}

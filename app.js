@@ -360,7 +360,7 @@ async function cargarProductos() {
 const esCelular = window.innerWidth <= 768;
 
 const productosMostrar =
-    esCelular && !mostrandoTodos
+    !mostrandoTodos
         ? productos.slice(0, 4)
         : productos;
 
@@ -383,7 +383,17 @@ productosMostrar.forEach((doc) => {
 
 <h3>${p.nombre}</h3>
 
-<p>${p.descripcion}</p>
+<p class="descripcion-producto">
+
+<span class="texto-corto">
+
+${p.descripcion}
+
+</span>
+
+<a href="#" class="ver-mas">Ver más</a>
+
+</p>
 
 <div class="precio">
 
@@ -432,19 +442,19 @@ Añadir al carrito
 
     if (btnVerMas) {
 
-    if (esCelular && productos.length > 4) {
+    if (productos.length > 4) {
 
-        btnVerMas.classList.remove("d-none");
+    btnVerMas.classList.remove("d-none");
 
-        btnVerMas.textContent = mostrandoTodos
-            ? "Ver menos"
-            : "Ver más productos";
+    btnVerMas.textContent = mostrandoTodos
+        ? "Ver menos"
+        : "Ver más productos";
 
-    } else {
+} else {
 
-        btnVerMas.classList.add("d-none");
+    btnVerMas.classList.add("d-none");
 
-    }
+}
 
 }
 
@@ -472,6 +482,27 @@ if (btnVerMas) {
 }
 
 cargarProductos();
+document.addEventListener("click", function(e){
+
+    if(!e.target.classList.contains("ver-mas")) return;
+
+    e.preventDefault();
+
+    const texto = e.target.previousElementSibling;
+
+    texto.classList.toggle("expandido");
+
+    if(texto.classList.contains("expandido")){
+
+        e.target.textContent = "Ver menos";
+
+    }else{
+
+        e.target.textContent = "Ver más";
+
+    }
+
+});
 // =========================
 // HACER FUNCIONES GLOBALES
 // =========================
